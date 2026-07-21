@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Tienda de Computación</title>
+    <title>GB. Network - Tienda de Computación</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,14 +12,14 @@
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="nav-logo">
-                    <i class="fas fa-microchip"></i>
-                    <span>TechStore</span>
+                <div class="nav-logo" id="navLogo">
+                    <!-- El logo se carga automáticamente desde /logo/ -->
+                    <img src="logo/logo.png" alt="GB. Network" id="logoImage" onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex'">
+                    <span id="logoText" style="display:none;">GB. Network</span>
                 </div>
                 
                 <div class="nav-links" id="navLinks">
                     <a href="#" onclick="mostrarSeccion('inicio')" class="active">Inicio</a>
-                    <a href="#" onclick="mostrarSeccion('promociones')">Promociones</a>
                     <a href="#" onclick="mostrarSeccion('inventario')">Inventario</a>
                 </div>
                 
@@ -161,7 +161,7 @@
             <div class="footer-col">
                 <div class="footer-logo">
                     <i class="fas fa-microchip"></i>
-                    <span>TechStore</span>
+                    <span>GB. Network</span>
                 </div>
                 <p>Tu tienda tecnológica de confianza. Los mejores productos al mejor precio.</p>
                 <div class="footer-social">
@@ -173,23 +173,32 @@
             </div>
             
             <div class="footer-col">
+                <h4>Productos</h4>
+                <a href="#">Computadoras</a>
+                <a href="#">Laptops</a>
+                <a href="#">Accesorios</a>
+                <a href="#">Cámaras</a>
+            </div>
+            
+            <div class="footer-col">
                 <h4>Contacto</h4>
                 <p><i class="fas fa-map-marker-alt"></i> Av. Tecnológica 123, Ciudad</p>
                 <p><i class="fas fa-phone"></i> +51 999 999 999</p>
-                <p><i class="fas fa-envelope"></i> info@techstore.com</p>
+                <p><i class="fas fa-envelope"></i> info@gbnetwork.com</p>
                 <p><i class="fas fa-map"></i> Ver en Google Maps</p>
             </div>
             
             <div class="footer-col">
                 <h4>Enlaces Rápidos</h4>
                 <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
-                <a href="#" onclick="mostrarSeccion('promociones')">Promociones</a>
                 <a href="#" onclick="mostrarSeccion('inventario')">Inventario</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Facebook</a>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2026 TechStore. Todos los derechos reservados.</p>
+            <p>&copy; 2026 GB. Network. Todos los derechos reservados.</p>
         </div>
     </footer>
 

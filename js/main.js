@@ -1,5 +1,5 @@
 // ============================================
-// TECHSTORE - MAIN.JS
+// GB. NETWORK - MAIN.JS
 // Funcionalidades completas sin modificar lógica
 // ============================================
 
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iniciarSlider();
     iniciarContador();
     iniciarEventos();
+    cargarLogo();
 });
 
 // Función original - NO MODIFICAR
@@ -28,7 +29,6 @@ async function cargarProductos(tipo) {
             const tarjeta = crearTarjeta(producto, tipo);
             contenedor.appendChild(tarjeta);
         });
-        // Aplicar filtros después de cargar
         if (tipo === 'inventario') {
             aplicarFiltros();
         }
@@ -39,7 +39,7 @@ async function cargarProductos(tipo) {
     }
 }
 
-// Función original - MODIFICADA para agregar badges y acciones
+// Función original - MODIFICADA para badges y acciones
 function crearTarjeta(producto, tipo) {
     const div = document.createElement('div');
     div.className = 'tarjeta-producto';
@@ -48,7 +48,6 @@ function crearTarjeta(producto, tipo) {
     
     const rutaImagen = `imagenes/${tipo}/${producto.imagen}`;
     
-    // Determinar badge
     let badge = '';
     if (tipo === 'promociones') {
         badge = '<span class="badge badge-oferta">🔥 Oferta</span>';
@@ -85,15 +84,13 @@ function mostrarSeccion(tipo) {
     document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activo'));
     document.getElementById(tipo).classList.add('activo');
     
-    // Actualizar navegación
     document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    const navMap = { 'inicio': 0, 'promociones': 1, 'inventario': 2 };
+    const navMap = { 'inicio': 0, 'inventario': 1 };
     if (navMap[tipo] !== undefined) {
         const links = document.querySelectorAll('.nav-links a');
         if (links[navMap[tipo]]) links[navMap[tipo]].classList.add('active');
     }
     
-    // Cerrar menú móvil
     document.getElementById('navLinks').classList.remove('open');
 }
 
@@ -107,6 +104,41 @@ function actualizarFecha() {
 }
 
 // ===== 3. FUNCIONES NUEVAS =====
+
+// 3.0 CARGA DE LOGO
+function cargarLogo() {
+    const logoImg = document.getElementById('logoImage');
+    const logoText = document.getElementById('logoText');
+    
+    // Intentar cargar logo desde /logo/
+    const logoPaths = ['logo/logo.png', 'logo/logo.jpg', 'logo/logo.webp', 'logo/logo.jpeg'];
+    
+    let intento = 0;
+    
+    function probarLogo() {
+        if (intento >= logoPaths.length) {
+            // No se encontró logo, mostrar texto
+            logoImg.style.display = 'none';
+            logoText.style.display = 'flex';
+            return;
+        }
+        
+        const img = new Image();
+        img.onload = function() {
+            // Logo encontrado
+            logoImg.src = logoPaths[intento];
+            logoImg.style.display = 'block';
+            logoText.style.display = 'none';
+        };
+        img.onerror = function() {
+            intento++;
+            probarLogo();
+        };
+        img.src = logoPaths[intento];
+    }
+    
+    probarLogo();
+}
 
 // 3.1 Helper: Obtener categoría
 function obtenerCategoria(nombre) {
@@ -138,7 +170,7 @@ function obtenerCategoria(nombre) {
     return 'all';
 }
 
-// 3.2 SLIDER HERO
+// 3.2 SLIDER HERO - REDUCIDO
 let slideIndex = 0;
 let sliderInterval;
 
@@ -146,12 +178,11 @@ function iniciarSlider() {
     const container = document.getElementById('sliderContainer');
     const indicadores = document.getElementById('sliderIndicators');
     
-    // Obtener imágenes de promociones
     fetch('datos/promociones.json')
         .then(res => res.json())
         .then(productos => {
             if (productos.length === 0) {
-                container.innerHTML = `<div class="slide active"><div class="slide-content"><h2>Bienvenido a <span>TechStore</span></h2><p style="color:white;font-size:18px;">Sube tus primeras promociones</p></div></div>`;
+                container.innerHTML = `<div class="slide active"><div class="slide-content"><h2>Bienvenido a <span>GB. Network</span></h2><p style="color:white;font-size:16px;">Sube tus primeras promociones</p></div></div>`;
                 return;
             }
             
@@ -170,7 +201,6 @@ function iniciarSlider() {
                 container.appendChild(slide);
             });
             
-            // Indicadores
             indicadores.innerHTML = '';
             productos.forEach((_, i) => {
                 const dot = document.createElement('span');
@@ -179,18 +209,15 @@ function iniciarSlider() {
                 indicadores.appendChild(dot);
             });
             
-            // Iniciar auto-play
             iniciarAutoPlay();
         })
         .catch(() => {
-            container.innerHTML = `<div class="slide active"><div class="slide-content"><h2>Bienvenido a <span>TechStore</span></h2><p style="color:white;font-size:18px;">Carga imágenes en la carpeta promociones</p></div></div>`;
+            container.innerHTML = `<div class="slide active"><div class="slide-content"><h2>Bienvenido a <span>GB. Network</span></h2><p style="color:white;font-size:16px;">Carga imágenes en la carpeta promociones</p></div></div>`;
         });
     
-    // Eventos botones
     document.getElementById('sliderPrev').addEventListener('click', () => { cambiarSlide(-1); reiniciarAutoPlay(); });
     document.getElementById('sliderNext').addEventListener('click', () => { cambiarSlide(1); reiniciarAutoPlay(); });
     
-    // Pausa al hover
     const slider = document.getElementById('heroSlider');
     slider.addEventListener('mouseenter', () => clearInterval(sliderInterval));
     slider.addEventListener('mouseleave', iniciarAutoPlay);
@@ -235,7 +262,6 @@ function reiniciarAutoPlay() {
 
 // 3.3 COUNTDOWN
 function iniciarContador() {
-    // Fijar fecha objetivo (48 horas desde ahora)
     const targetDate = new Date();
     targetDate.setHours(targetDate.getHours() + 48);
     
@@ -273,8 +299,7 @@ function iniciarBuscador() {
         const tarjetas = seccion.querySelectorAll('.tarjeta-producto');
         tarjetas.forEach(tarjeta => {
             const nombre = tarjeta.dataset.nombre || '';
-            const visible = nombre.includes(query) || query === '';
-            tarjeta.style.display = visible ? 'block' : 'none';
+            tarjeta.style.display = nombre.includes(query) || query === '' ? 'block' : 'none';
         });
     });
 }
@@ -321,7 +346,6 @@ function iniciarToggleInventario() {
             container.classList.remove('inventario-hidden');
             container.classList.add('inventario-visible');
             btn.innerHTML = '<i class="fas fa-chevron-up"></i> Ocultar Inventario';
-            // Cargar productos si no están cargados
             if (!container.dataset.cargado) {
                 cargarProductos('inventario');
                 container.dataset.cargado = 'true';
@@ -358,7 +382,6 @@ function iniciarModoOscuro() {
     const btn = document.getElementById('themeToggle');
     const icon = btn.querySelector('i');
     
-    // Verificar preferencia guardada
     if (localStorage.getItem('theme') === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         icon.className = 'fas fa-sun';
@@ -416,7 +439,6 @@ function iniciarEventos() {
     iniciarHeaderScroll();
     iniciarMenuMovil();
     
-    // Modal
     document.getElementById('modalClose').addEventListener('click', cerrarModal);
     document.getElementById('productModal').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) cerrarModal();
@@ -425,6 +447,5 @@ function iniciarEventos() {
         if (e.key === 'Escape') cerrarModal();
     });
     
-    // WhatsApp flotante
     document.getElementById('whatsappFloat').href = 'https://wa.me/51999999999';
 }
