@@ -3,15 +3,23 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+print("🔄 INICIANDO GENERADOR DE JSON...")
+
 def generar_json(carpeta_imagenes, archivo_salida):
     """Genera un archivo JSON con la información de las imágenes"""
     productos = []
+    
+    print(f"📂 Procesando: {carpeta_imagenes}")
     
     # Verificar que la carpeta existe
     if not os.path.exists(carpeta_imagenes):
         print(f"⚠️ Carpeta {carpeta_imagenes} no existe - Creando...")
         os.makedirs(carpeta_imagenes, exist_ok=True)
         print(f"✅ Carpeta {carpeta_imagenes} creada")
+        # Guardar JSON vacío
+        with open(archivo_salida, 'w', encoding='utf-8') as f:
+            json.dump([], f, ensure_ascii=False, indent=2)
+        print(f"✅ Generado {archivo_salida} (vacío)")
         return
     
     # Listar archivos de imagen
@@ -22,7 +30,7 @@ def generar_json(carpeta_imagenes, archivo_salida):
         if any(f.lower().endswith(ext) for ext in extensiones):
             archivos.append(f)
     
-    print(f"📂 Encontrados {len(archivos)} archivos en {carpeta_imagenes}")
+    print(f"📸 Encontrados {len(archivos)} archivos en {carpeta_imagenes}")
     
     for archivo in archivos:
         try:
@@ -73,6 +81,7 @@ def generar_json(carpeta_imagenes, archivo_salida):
 
 # Configuración y ejecución
 if __name__ == "__main__":
+    print("=" * 50)
     print("🔄 GENERANDO ARCHIVOS JSON...")
     print("=" * 50)
     
