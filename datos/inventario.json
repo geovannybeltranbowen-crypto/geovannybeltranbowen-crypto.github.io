@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "imagen": "TAPO_C100_50.jpg",
+    "nombre": "Tapo C100",
+    "precio": "50",
+    "descripcion": "Computadora Tapo modelo C100",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "EPSON_L3250_290.jpg",
+    "nombre": "Epson L3250",
+    "precio": "290",
+    "descripcion": "Computadora Epson modelo L3250",
+    "fecha": "21/07/2026"
+  }
+]

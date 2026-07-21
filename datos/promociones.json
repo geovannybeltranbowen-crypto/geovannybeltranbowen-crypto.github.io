@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "imagen": "DELL_DC15255_665.jpg",
+    "nombre": "Dell Dc15255",
+    "precio": "665",
+    "descripcion": "Computadora Dell modelo Dc15255",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "ENV_AMD RYZEN5_670.jpg",
+    "nombre": "Env Amd ryzen5",
+    "precio": "670",
+    "descripcion": "Computadora Env modelo Amd ryzen5",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "TAPO_C545D_115.jpg",
+    "nombre": "Tapo C545d",
+    "precio": "115",
+    "descripcion": "Computadora Tapo modelo C545d",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "LENOVO_V14 64 AMN_575.jpg",
+    "nombre": "Lenovo V14 64 amn",
+    "precio": "575",
+    "descripcion": "Computadora Lenovo modelo V14 64 amn",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "DELL_DC15250_775.jpg",
+    "nombre": "Dell Dc15250",
+    "precio": "775",
+    "descripcion": "Computadora Dell modelo Dc15250",
+    "fecha": "21/07/2026"
+  },
+  {
+    "imagen": "EZVIZ_H1C_70.jpg",
+    "nombre": "Ezviz H1c",
+    "precio": "70",
+    "descripcion": "Computadora Ezviz modelo H1c",
+    "fecha": "21/07/2026"
+  }
+]
