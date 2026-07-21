@@ -7,6 +7,13 @@
     "fecha": "21/07/2026"
   },
   {
+    "imagen": "EPSON_L4370_350.jpeg",
+    "nombre": "Epson L4370",
+    "precio": "350",
+    "descripcion": "Computadora Epson modelo L4370",
+    "fecha": "21/07/2026"
+  },
+  {
     "imagen": "EPSON_L3250_290.jpg",
     "nombre": "Epson L3250",
     "precio": "290",
