@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Computación</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>🖥️ Tienda de Computación</h1>
+        <nav>
+            <button onclick="mostrarSeccion('promociones')">🔥 Promociones del Día</button>
+            <button onclick="mostrarSeccion('inventario')">📦 Inventario General</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="promociones" class="activo">
+            <h2>🔥 Promociones del Día</h2>
+            <div id="contenedor-promociones" class="grid-productos"></div>
+        </section>
+
+        <section id="inventario">
+            <h2>📦 Inventario General</h2>
+            <div id="contenedor-inventario" class="grid-productos"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Actualizado: <span id="fecha-actualizacion"></span></p>
+        <p>Tamaño recomendado de fotos: 800x600px | Máximo 2MB</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

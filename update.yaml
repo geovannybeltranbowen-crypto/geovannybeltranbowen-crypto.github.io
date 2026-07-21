@@ -1,0 +1,34 @@
+name: Actualizar Productos
+
+on:
+  push:
+    paths:
+      - 'imagenes/**'
+  workflow_dispatch:
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Ejecutar script
+        run: python generar_json.py
+      
+      - name: Configurar Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      - name: Subir cambios
+        run: |
+          git add datos/
+          git diff --cached --quiet || git commit -m "Actualizar inventario automáticamente"
+          git push
