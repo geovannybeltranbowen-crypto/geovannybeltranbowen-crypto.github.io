@@ -11,24 +11,36 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Clonar repositorio
+      - name: 📥 Clonar repositorio
         uses: actions/checkout@v3
       
-      - name: Configurar Python
+      - name: 🐍 Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
       
-      - name: Ejecutar script
+      - name: 📂 Listar archivos
+        run: |
+          echo "📂 Contenido del repositorio:"
+          ls -la
+          echo "📂 Contenido de imagenes:"
+          ls -la imagenes/ || echo "La carpeta imagenes no existe"
+      
+      - name: 🚀 Ejecutar script
         run: python generar_json.py
       
-      - name: Configurar Git
+      - name: 📂 Verificar archivos generados
+        run: |
+          echo "📂 Verificando archivos generados:"
+          ls -la datos/ || echo "La carpeta datos no existe"
+      
+      - name: ⚙️ Configurar Git
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
       
-      - name: Subir cambios
+      - name: 📤 Subir cambios
         run: |
           git add datos/
-          git diff --cached --quiet || git commit -m "Actualizar inventario automáticamente"
+          git diff --cached --quiet || git commit -m "🔄 Actualizar inventario automáticamente"
           git push
