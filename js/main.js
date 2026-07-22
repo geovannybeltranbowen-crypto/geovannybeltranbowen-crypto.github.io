@@ -1,9 +1,19 @@
-// ============================================
+// ============================================================
 // GB. NETWORK - MAIN.JS
-// Funcionalidades completas sin modificar lógica
-// ============================================
+// ============================================================
+// 📌 CONFIGURACIÓN DE CONTACTOS (ACTUALIZAR AQUÍ)
+// ============================================================
+// WhatsApp: https://wa.me/593992375071
+// Facebook: https://www.facebook.com/nelsonyovo
+// Instagram: Pendiente de actualizar
+// Correo: Pendiente de actualizar
+// Dirección: Ubicación en actualización
+// Google Maps: Próximamente
+// ============================================================
 
-// ===== 1. CARGA DE PRODUCTOS (SIN CAMBIOS) =====
+// ============================================================
+// 1. CARGA DE PRODUCTOS (NO MODIFICAR - SISTEMA EXISTENTE)
+// ============================================================
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos('promociones');
     cargarProductos('inventario');
@@ -39,7 +49,7 @@ async function cargarProductos(tipo) {
     }
 }
 
-// Función original - MODIFICADA para badges y acciones
+// Función de tarjetas - CON WHATSAPP REAL
 function crearTarjeta(producto, tipo) {
     const div = document.createElement('div');
     div.className = 'tarjeta-producto';
@@ -71,6 +81,7 @@ function crearTarjeta(producto, tipo) {
             <div class="fecha">📅 ${producto.fecha || 'Fecha no disponible'}</div>
             <div class="card-actions">
                 <button class="btn-detail" onclick="abrirModal('${tipo}', '${producto.imagen}', '${producto.nombre}', '${producto.precio}', '${producto.descripcion}', '${producto.fecha}')">Ver Detalles</button>
+                <!-- 📌 WHATSAPP: Número real - https://wa.me/593992375071 -->
                 <button class="btn-whatsapp" onclick="abrirWhatsapp('${producto.nombre}', '${producto.precio}')"><i class="fab fa-whatsapp"></i></button>
             </div>
         </div>
@@ -79,7 +90,9 @@ function crearTarjeta(producto, tipo) {
     return div;
 }
 
-// ===== 2. FUNCIONES ORIGINALES (NO MODIFICAR) =====
+// ============================================================
+// 2. FUNCIONES ORIGINALES (NO MODIFICAR)
+// ============================================================
 function mostrarSeccion(tipo) {
     document.querySelectorAll('.seccion').forEach(sec => sec.classList.remove('activo'));
     document.getElementById(tipo).classList.add('activo');
@@ -103,21 +116,21 @@ function actualizarFecha() {
     }
 }
 
-// ===== 3. FUNCIONES NUEVAS =====
+// ============================================================
+// 3. FUNCIONES NUEVAS
+// ============================================================
 
-// 3.0 CARGA DE LOGO
+// 3.0 CARGA DE LOGO (desde /logo/)
 function cargarLogo() {
     const logoImg = document.getElementById('logoImage');
     const logoText = document.getElementById('logoText');
     
-    // Intentar cargar logo desde /logo/
     const logoPaths = ['logo/logo.png', 'logo/logo.jpg', 'logo/logo.webp', 'logo/logo.jpeg'];
     
     let intento = 0;
     
     function probarLogo() {
         if (intento >= logoPaths.length) {
-            // No se encontró logo, mostrar texto
             logoImg.style.display = 'none';
             logoText.style.display = 'flex';
             return;
@@ -125,7 +138,6 @@ function cargarLogo() {
         
         const img = new Image();
         img.onload = function() {
-            // Logo encontrado
             logoImg.src = logoPaths[intento];
             logoImg.style.display = 'block';
             logoText.style.display = 'none';
@@ -152,7 +164,7 @@ function obtenerCategoria(nombre) {
     if (nombreLower.includes('gaming') || nombreLower.includes('gamer')) {
         return 'gaming';
     }
-    if (nombreLower.includes('camara') || nombreLower.includes('camera') || nombreLower.includes('foto')) {
+    if (nombreLower.includes('camara') || nombreLower.includes('camera') || nombreLower.includes('foto') || nombreLower.includes('seguridad')) {
         return 'camara';
     }
     if (nombreLower.includes('wifi') || nombreLower.includes('router') || nombreLower.includes('switch') || nombreLower.includes('red')) {
@@ -170,7 +182,7 @@ function obtenerCategoria(nombre) {
     return 'all';
 }
 
-// 3.2 SLIDER HERO - REDUCIDO
+// 3.2 SLIDER HERO
 let slideIndex = 0;
 let sliderInterval;
 
@@ -354,14 +366,17 @@ function iniciarToggleInventario() {
     });
 }
 
-// 3.7 MODAL
+// ============================================================
+// 3.7 MODAL - VENTANA EMERGENTE
+// ============================================================
 function abrirModal(tipo, imagen, nombre, precio, descripcion, fecha) {
     const modal = document.getElementById('productModal');
     document.getElementById('modalImage').src = `imagenes/${tipo}/${imagen}`;
     document.getElementById('modalName').textContent = nombre;
     document.getElementById('modalPrice').textContent = `$${precio}`;
     document.getElementById('modalDescription').textContent = descripcion || 'Sin descripción';
-    document.getElementById('modalWhatsapp').href = `https://wa.me/51999999999?text=Hola!%20Quiero%20información%20sobre%20${encodeURIComponent(nombre)}%20-%20$${precio}`;
+    // 📌 WHATSAPP: Número real - https://wa.me/593992375071
+    document.getElementById('modalWhatsapp').href = 'https://wa.me/593992375071?text=Hola!%20Quiero%20información%20sobre%20' + encodeURIComponent(nombre) + '%20-%20$' + precio;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -371,13 +386,21 @@ function cerrarModal() {
     document.body.style.overflow = '';
 }
 
-// 3.8 WHATSAPP
+// ============================================================
+// 3.8 WHATSAPP - FUNCIÓN PARA BOTONES
+// ============================================================
+// 📌 PARA CAMBIAR EL NÚMERO: Editar el número en el href
+// Formato internacional: 593 + 9 dígitos (Ecuador)
+// Ejemplo: 593992375071
+// ============================================================
 function abrirWhatsapp(nombre, precio) {
     const msg = `Hola! Quiero información sobre ${nombre} - $${precio}`;
-    window.open(`https://wa.me/51999999999?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/593992375071?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
+// ============================================================
 // 3.9 MODO OSCURO
+// ============================================================
 function iniciarModoOscuro() {
     const btn = document.getElementById('themeToggle');
     const icon = btn.querySelector('i');
@@ -401,7 +424,9 @@ function iniciarModoOscuro() {
     });
 }
 
+// ============================================================
 // 3.10 SCROLL TOP
+// ============================================================
 function iniciarScrollTop() {
     const btn = document.getElementById('scrollTop');
     window.addEventListener('scroll', () => {
@@ -412,7 +437,9 @@ function iniciarScrollTop() {
     });
 }
 
+// ============================================================
 // 3.11 HEADER SCROLL
+// ============================================================
 function iniciarHeaderScroll() {
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -420,7 +447,9 @@ function iniciarHeaderScroll() {
     });
 }
 
+// ============================================================
 // 3.12 MENÚ MÓVIL
+// ============================================================
 function iniciarMenuMovil() {
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
@@ -429,7 +458,9 @@ function iniciarMenuMovil() {
     });
 }
 
-// ===== 4. INICIALIZAR TODAS LAS FUNCIONES =====
+// ============================================================
+// 4. INICIALIZAR TODAS LAS FUNCIONES
+// ============================================================
 function iniciarEventos() {
     iniciarBuscador();
     iniciarFiltros();
@@ -439,6 +470,7 @@ function iniciarEventos() {
     iniciarHeaderScroll();
     iniciarMenuMovil();
     
+    // Modal
     document.getElementById('modalClose').addEventListener('click', cerrarModal);
     document.getElementById('productModal').addEventListener('click', (e) => {
         if (e.target === e.currentTarget) cerrarModal();
@@ -447,5 +479,6 @@ function iniciarEventos() {
         if (e.key === 'Escape') cerrarModal();
     });
     
-    document.getElementById('whatsappFloat').href = 'https://wa.me/51999999999';
+    // 📌 WHATSAPP FLOTANTE: Número real - https://wa.me/593992375071
+    document.getElementById('whatsappFloat').href = 'https://wa.me/593992375071';
 }

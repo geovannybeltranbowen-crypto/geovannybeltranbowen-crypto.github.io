@@ -3,43 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GB. Network - Tienda de Computación</title>
+    
+    <!-- ===== SEO ===== -->
+    <title>GB. Network | Tienda de Computación y Tecnología</title>
+    <meta name="description" content="GB. Network - Venta de computadoras, laptops, cámaras de seguridad, equipos de redes, accesorios tecnológicos y soporte técnico en Ecuador.">
+    <meta name="keywords" content="computadoras, laptops, cámaras de seguridad, redes, accesorios, soporte técnico, GB Network, tecnología Ecuador">
+    <meta name="author" content="GB. Network">
+    
+    <!-- ===== Favicon ===== -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- ===== Open Graph ===== -->
+    <meta property="og:title" content="GB. Network | Tienda de Computación y Tecnología">
+    <meta property="og:description" content="Venta de computadoras, laptops, cámaras de seguridad, redes y accesorios tecnológicos en Ecuador.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://geovannybeltranbowen-crypto.github.io/">
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- ===== HEADER ===== -->
+    <!-- ============================================
+    HEADER - ENCABEZADO PRINCIPAL
+    ============================================ -->
     <header id="header">
         <nav class="navbar">
             <div class="nav-container">
+                <!-- ===== LOGO (Carga automática desde /logo/) ===== -->
                 <div class="nav-logo" id="navLogo">
-                    <!-- El logo se carga automáticamente desde /logo/ -->
                     <img src="logo/logo.png" alt="GB. Network" id="logoImage" onerror="this.style.display='none'; document.getElementById('logoText').style.display='flex'">
                     <span id="logoText" style="display:none;">GB. Network</span>
                 </div>
                 
+                <!-- ===== MENÚ DE NAVEGACIÓN ===== -->
                 <div class="nav-links" id="navLinks">
                     <a href="#" onclick="mostrarSeccion('inicio')" class="active">Inicio</a>
                     <a href="#" onclick="mostrarSeccion('inventario')">Inventario</a>
                 </div>
                 
+                <!-- ===== ACCIONES DEL HEADER ===== -->
                 <div class="nav-actions">
+                    <!-- Buscador -->
                     <div class="search-container">
                         <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input">
                         <i class="fas fa-search search-icon"></i>
                     </div>
                     
+                    <!-- Botón Modo Oscuro -->
                     <button id="themeToggle" class="theme-toggle" title="Modo oscuro">
                         <i class="fas fa-moon"></i>
                     </button>
                     
+                    <!-- Redes Sociales -->
                     <div class="social-icons">
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <!-- FACEBOOK - URL REAL -->
+                        <a href="https://www.facebook.com/nelsonyovo" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <!-- INSTAGRAM - PENDIENTE DE ACTUALIZAR -->
+                        <a href="#" target="_blank" rel="noopener noreferrer" id="instagramLink" onclick="return false;" title="Próximamente"><i class="fab fa-instagram"></i></a>
+                        <!-- WHATSAPP - NÚMERO REAL -->
+                        <a href="https://wa.me/593992375071" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
+                <!-- Menú Móvil (Hamburguesa) -->
                 <div class="nav-toggle" id="navToggle">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -47,15 +74,15 @@
         </nav>
     </header>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- ============================================
+    CONTENIDO PRINCIPAL
+    ============================================ -->
     <main>
         <!-- ===== SECCIÓN INICIO (Slider + Promociones) ===== -->
         <section id="inicio" class="seccion activo">
             <!-- SLIDER HERO -->
             <div class="hero-slider" id="heroSlider">
-                <div class="slider-container" id="sliderContainer">
-                    <!-- Las slides se generan automáticamente con JS -->
-                </div>
+                <div class="slider-container" id="sliderContainer"></div>
                 
                 <!-- Controles del slider -->
                 <button class="slider-btn prev" id="sliderPrev">
@@ -119,7 +146,9 @@
         </section>
     </main>
 
-    <!-- ===== MODAL ===== -->
+    <!-- ============================================
+    MODAL - VENTANA EMERGENTE DE PRODUCTOS
+    ============================================ -->
     <div id="productModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">
@@ -136,7 +165,8 @@
                         <span><i class="fas fa-check-circle"></i> Envío gratis</span>
                         <span><i class="fas fa-check-circle"></i> Soporte 24/7</span>
                     </div>
-                    <a href="#" class="btn-whatsapp-modal" id="modalWhatsapp">
+                    <!-- WHATSAPP MODAL - NÚMERO REAL -->
+                    <a href="https://wa.me/593992375071" class="btn-whatsapp-modal" id="modalWhatsapp" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
                     </a>
                 </div>
@@ -144,56 +174,79 @@
         </div>
     </div>
 
-    <!-- ===== BOTONES FLOTANTES ===== -->
-    <!-- Botón WhatsApp -->
-    <a href="#" class="whatsapp-float" target="_blank" id="whatsappFloat">
+    <!-- ============================================
+    BOTONES FLOTANTES
+    ============================================ -->
+    
+    <!-- ===== BOTÓN WHATSAPP FLOTANTE ===== -->
+    <!-- 📌 PARA CAMBIAR EL NÚMERO: Editar el href con el formato https://wa.me/CODIGOPAISNUMERO -->
+    <!-- Ejemplo Ecuador: https://wa.me/593992375071 -->
+    <a href="https://wa.me/593992375071" class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsappFloat">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Botón Volver Arriba -->
+    <!-- ===== BOTÓN VOLVER ARRIBA ===== -->
     <button class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ============================================
+    FOOTER - PIE DE PÁGINA
+    ============================================ -->
     <footer>
         <div class="footer-container">
+            <!-- Columna 1: Logo y descripción -->
             <div class="footer-col">
                 <div class="footer-logo">
                     <i class="fas fa-microchip"></i>
                     <span>GB. Network</span>
                 </div>
-                <p>Tu tienda tecnológica de confianza. Los mejores productos al mejor precio.</p>
+                <!-- 📌 DESCRIPCIÓN REAL DEL NEGOCIO -->
+                <p>GB. Network es una tienda especializada en computadoras, laptops, cámaras de seguridad, redes, accesorios tecnológicos y soluciones informáticas. Ofrecemos equipos de calidad, asesoría personalizada y soporte técnico para hogares, empresas e instituciones.</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <!-- 📌 FACEBOOK: https://www.facebook.com/nelsonyovo -->
+                    <a href="https://www.facebook.com/nelsonyovo" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <!-- 📌 INSTAGRAM: Pendiente de actualizar -->
+                    <a href="#" target="_blank" rel="noopener noreferrer" onclick="return false;" title="Próximamente"><i class="fab fa-instagram"></i></a>
+                    <!-- 📌 WHATSAPP: https://wa.me/593992375071 -->
+                    <a href="https://wa.me/593992375071" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
+            <!-- Columna 2: Nuestros Productos -->
             <div class="footer-col">
-                <h4>Productos</h4>
-                <a href="#">Computadoras</a>
-                <a href="#">Laptops</a>
-                <a href="#">Accesorios</a>
-                <a href="#">Cámaras</a>
+                <h4>Nuestros Productos</h4>
+                <a href="#" onclick="mostrarSeccion('inventario')">Computadoras</a>
+                <a href="#" onclick="mostrarSeccion('inventario')">Laptops</a>
+                <a href="#" onclick="mostrarSeccion('inventario')">Cámaras de Seguridad</a>
+                <a href="#" onclick="mostrarSeccion('inventario')">Equipos de Redes</a>
+                <a href="#" onclick="mostrarSeccion('inventario')">Accesorios</a>
+                <a href="#" onclick="mostrarSeccion('inventario')">Impresoras</a>
             </div>
             
+            <!-- Columna 3: Contacto -->
             <div class="footer-col">
                 <h4>Contacto</h4>
-                <p><i class="fas fa-map-marker-alt"></i> Av. Tecnológica 123, Ciudad</p>
-                <p><i class="fas fa-phone"></i> +51 999 999 999</p>
-                <p><i class="fas fa-envelope"></i> info@gbnetwork.com</p>
-                <p><i class="fas fa-map"></i> Ver en Google Maps</p>
+                <!-- 📌 DIRECCIÓN: Actualizar cuando se tenga -->
+                <p><i class="fas fa-map-marker-alt"></i> Ubicación en actualización</p>
+                <!-- 📌 TELÉFONO: Número real -->
+                <p><i class="fas fa-phone"></i> +593 99 237 5071</p>
+                <!-- 📌 CORREO: Pendiente de actualizar -->
+                <p><i class="fas fa-envelope"></i> Correo electrónico próximamente</p>
+                <!-- 📌 GOOGLE MAPS: Pendiente de actualizar -->
+                <p><i class="fas fa-map"></i> Próximamente</p>
             </div>
             
+            <!-- Columna 4: Enlaces Rápidos -->
             <div class="footer-col">
                 <h4>Enlaces Rápidos</h4>
                 <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
                 <a href="#" onclick="mostrarSeccion('inventario')">Inventario</a>
-                <a href="#">WhatsApp</a>
-                <a href="#">Facebook</a>
+                <!-- 📌 WHATSAPP: https://wa.me/593992375071 -->
+                <a href="https://wa.me/593992375071" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <!-- 📌 FACEBOOK: https://www.facebook.com/nelsonyovo -->
+                <a href="https://www.facebook.com/nelsonyovo" target="_blank" rel="noopener noreferrer">Facebook</a>
             </div>
         </div>
         
@@ -202,7 +255,9 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- ============================================
+    SCRIPTS
+    ============================================ -->
     <script src="js/main.js"></script>
 </body>
 </html>
